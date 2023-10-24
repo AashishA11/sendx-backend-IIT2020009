@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sendex Web Crawler</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Sendex Web Crawler</h1>
+        <form action="/crawl" method="post">
+            <label for="customerType">Customer Type:</label>
+            <select id="customerType" name="customerType" required>
+                <option value="paid">Paid</option>
+                <option value="free">Free</option>
+            </select>
+            <label for="url">URL:</label>
+            <input type="text" id="url" name="url" required>
+            <input type="submit" value="Crawl">
+        </form>
+    </div>
+
+    <hr>
+
+    <h2>Administrator Panel</h2>
+    <button id="adminButton">Admin Login</button>
+
+    <!-- Hidden admin login form -->
+    <div id="adminLoginForm">
+        <h3>Admin Login</h3>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("adminButton").addEventListener("click", function () {
+            document.getElementById("adminLoginForm").style.display = "block";
+        });
+
+        // Handling login form submission
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Replace 'admin' and 'password' with your actual admin credentials
+            if (username === "admin" && password === "password") {
+                // Redirect to the admin page on successful login
+                window.location.href = "/admin.html";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+    </script>
+</body>
+
+</html>
